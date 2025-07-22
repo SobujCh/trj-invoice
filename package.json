@@ -11,6 +11,8 @@
   "description": "",
   "dependencies": {
     "express": "^5.1.0",
-    "multer": "^2.0.1"
+    "jsdom": "^26.1.0",
+    "multer": "^2.0.1",
+    "undici": "^6.21.3"
   }
 }
