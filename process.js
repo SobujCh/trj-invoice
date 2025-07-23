@@ -44,7 +44,7 @@ async function fetcher(dataBody) {
             clearInterval(intervalId); // Stop the interval if we hit a redirect
             clearControllers(); // Abort all ongoing fetch requests
             aborting = true; // Set aborting flag to true
-            return; // Don't try to parse as HTML since it's a redirect
+            process.exit(0); // Exit cleanly with success status
         }
         
         if (!response.ok) { 
