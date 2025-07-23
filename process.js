@@ -33,8 +33,7 @@ async function fetcher(dataBody) {
         // Check if it's a redirect response (3xx status codes)
         if (response.status >= 300 && response.status < 400) {
             const redirectUrl = response.headers.get('location');
-            console.log('Redirect URL:', redirectUrl);
-            console.log('Response Status:', response.status);
+            console.log('Status:', response.status, 'Redirect URL:', redirectUrl);
             clearInterval(intervalId); // Stop the interval if we hit a redirect
             return; // Don't try to parse as HTML since it's a redirect
         }
