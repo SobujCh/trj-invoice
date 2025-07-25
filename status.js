@@ -113,7 +113,6 @@ function errCountUp(status) {
 function fullStop(){
     clearInterval(intervalId);
     clearControllers();
-    console.log('\nProcess stopped.');
     process.exit(0);
 }
 run()
