@@ -1,0 +1,27 @@
+{"proxies": {
+    "iproyal": {
+        "url": "http://CHNwdYQi3qRbbKh1:ZzTX8KjtB7V_country-bd_city-[citycode]@geo.iproyal.com:12321",
+        "cities": [
+            "baniachang","bogra","chattogram","chhatak","chittagong","comilla","dhaka",
+            "faridpur","hajiganj","ishurdi","jessore","kaliganj","khilgaon","maulavibazar",
+            "mymensingh","noakhali","pabna","parnaogaon","rajshahi","rangpur",
+            "sakhipur","savar","shahzadpur","sylhet","tangail"
+        ]
+    },
+    "oxylabs": {
+        "url": "http://customer-sobuj_LC4M3-cc-BD-city-[citycode]:DMhED7pZYNo3+@pr.oxylabs.io:7777",
+        "cities": [
+            "dhaka", "chittagong", "mirpur", "khulna", "rajshahi", "sylhet",
+            "gazipur", "narayanganj", "comilla", "mymensingh", "rangpur_city",
+            "bogra", "jessore", "khilgaon", "pabna", "barishal", "tangail",
+            "narsingdi", "feni", "sirajganj", "wari", "chandpur", "kushtia",
+            "pabna_sadar", "joypurhat", "faridpurahati", "rangamati",
+            "coxs_bazar", "tejgaon", "dinajpur", "noakhali", "sherpur",
+            "tongi"
+        ]
+    },
+    "brightdata": {
+        "url": "http://brd-customer-hl_8a04362d-zone-residential_proxy1-country-bd:ujxe3hblhf8o@brd.superproxy.io:33335",
+        "cities": ["all", "all", "all", "all", "all", "all", "all", "all", "all", "all", "all", "all", "all", "all", "all", "all", "all", "all", "all", "all"]
+    }
+}}
