@@ -77,7 +77,7 @@ async function fetcher(sbimuid) {
         if (html) { // Only process HTML if we have it
             if(html.includes('Thank you for your payment')) {
                 console.log('Payment Successful!!!');
-                clearInterval(intervalId); // Stop the interval if we hit a success
+                fullStop();
             }else if(html.includes('Your payment was declined')) {
                 decliner++;
                 console.error(`Payment Declined ${decliner}!!!`);
