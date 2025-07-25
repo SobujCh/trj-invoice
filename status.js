@@ -90,7 +90,7 @@ async function fetcher(sbimuid) {
     }).catch(error => {
         if (aborting) return;                           // If we are aborting, skip further processing
         if (error.name === 'AbortError') {return;}      //if aborted, we don't need to log it
-        console.error('Error fetching data:', error.message);
+        console.error('Error fetching data:', error.name, error.code, error.message);
         console.log('');
     });
     currentAgent = (currentAgent + 1) % agents.length; // Cycle through agents
