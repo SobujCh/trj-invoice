@@ -76,7 +76,8 @@ async function fetcher(sbimuid) {
         if(aborting) return; // If we are aborting, skip further processing
         if (html) { // Only process HTML if we have it
             if(html.includes('Thank you for your payment')) {
-                console.log('Payment Successful!!!');
+                var count = (html.match(/BGD/g) || []).length;
+                console.log(`Payment Successful ${count}!!!`);
                 fullStop();
             }else if(html.includes('Your payment was declined')) {
                 decliner++;
