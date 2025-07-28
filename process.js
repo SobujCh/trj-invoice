@@ -71,6 +71,7 @@ async function fetcher(dataBody) {
     }).catch(error => {
         if (aborting) return;                   // If we are aborting, skip further processing
         if (error.name === 'AbortError') {return;}      //if aborted, we don't need to log it
+        if(error.cause && error.cause.cause && typeof(error.cause.cause) === 'object' && error.cause.cause.name && error.cause.cause.name=='AbortError')return;
         console.error('\nError fetching data:');
         console.error('Message:', error.message);
         console.error('Cause2:', typeof(error.cause.cause));
