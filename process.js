@@ -49,7 +49,6 @@ async function fetcher(dataBody) {
         // Check if it's a redirect response (3xx status codes)
         if (response.status >= 300 && response.status < 400) {
             const redirectUrl = response.headers.get('location');
-            console.log('');
             console.log('Status:', response.status, 'Redirect URL:', redirectUrl);
             clearInterval(intervalId); // Stop the interval if we hit a redirect
             clearControllers(); // Abort all ongoing fetch requests
@@ -59,8 +58,6 @@ async function fetcher(dataBody) {
         
         if (!response.ok) { 
             errCountUp(response.status);
-            process.stdout.write(`\rProcessing: ${count}%`);
-            console.log('Response not OK:', response.status); 
             return; 
         }
         return response.text();
@@ -72,10 +69,9 @@ async function fetcher(dataBody) {
             //console.log('Fetched HTML:', html.trim());
         }
     }).catch(error => {
-        if (aborting) return;                           // If we are aborting, skip further processing
+        if (aborting) return;                   // If we are aborting, skip further processing
         if (error.name === 'AbortError') {return;}      //if aborted, we don't need to log it
-        console.error('Error fetching data:', error.message);
-        console.log('');
+        console.error('\nError fetching data:', error);
     });
     currentAgent = (currentAgent + 1) % agents.length; // Cycle through agents
 }
