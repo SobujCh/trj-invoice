@@ -75,9 +75,14 @@ async function fetcher(dataBody) {
         console.error('\nError fetching data:');
         console.error('Message:', error.message);
         console.error('Cause2:', typeof(error.cause.cause));
-        console.error('CauseKeys:', Object.keys(error.cause.cause));
-        console.error('CauseName:', error.cause.cause.name);
-        console.error('CauseCode:', error.cause.cause.code);
+        if(error.cause && error.cause.cause && typeof(error.cause.cause)==='object' && error.cause.cause) {
+            console.error('CauseKeys:', Object.keys(error.cause.cause));
+            console.error('CauseName:', error.cause.cause.name);
+            console.error('CauseCode:', error.cause.cause.code);
+
+        }else {
+            console.error('Cause:', error.cause);
+        }
     });
     currentAgent = (currentAgent + 1) % agents.length; // Cycle through agents
 }
