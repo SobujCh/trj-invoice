@@ -101,6 +101,6 @@ function errCountUp(status) {
         case 504: err504++; break;
         default: otherErrors++; if(otherCodes.indexOf(status) === -1){otherCodes += status + ', '; }
     }
-    process.stdout.write(`\nErrors - 402:${err402}, 403:${err403}, 419:${err419}, 429:${err429}, 500:${err500}, 502:${err502}, 503:${err503}, 504:${err504}, Other:${otherErrors} (${otherCodes})`);
+    process.stdout.write(`Errors - 402:${err402}, 403:${err403}, 419:${err419}, 429:${err429}, 500:${err500}, 502:${err502}, 503:${err503}, 504:${err504}, Other:${otherErrors} (${otherCodes})`);
 }
 run()
