@@ -75,7 +75,7 @@ async function fetcher(dataBody) {
         console.error('\nMessage:', error.message);
         console.error('\nCause:', error.cause);
         console.error('\nCauseKeys:', Object.keys(error.cause));
-        console.error('\nCauseType:', typeof(error.cause));
+        console.error('\nCause2:', error.cause.cause);
     });
     currentAgent = (currentAgent + 1) % agents.length; // Cycle through agents
 }
