@@ -15,7 +15,7 @@ let currentAgent = 0;
 let intervalId = null;
 let controllers = [];
 let aborting = false;
-let err403=0,err419=0,err429=0,err500=0,err502=0,err503=0,err504=0,otherErrors=0,otherCodes='';
+let err402=0,err403=0,err419=0,err429=0,err500=0,err502=0,err503=0,err504=0,otherErrors=0,otherCodes='';
 async function run(){
     if(process.argv.length < 3) {
         console.error("Please provide the URL to fetch as an argument.");
@@ -91,6 +91,7 @@ function clearControllers() {
 }
 function errCountUp(status) {
     switch (status) {
+        case 402: err402++; break;
         case 403: err403++; break;
         case 419: err419++; break;
         case 429: err429++; break;
@@ -100,6 +101,6 @@ function errCountUp(status) {
         case 504: err504++; break;
         default: otherErrors++; if(otherCodes.indexOf(status) === -1){otherCodes += status + ', '; }
     }
-    process.stdout.write(`\nErrors - 403:${err403}, 419:${err419}, 429:${err429}, 500:${err500}, 502:${err502}, 503:${err503}, 504:${err504}, Other:${otherErrors} (${otherCodes})`);
+    process.stdout.write(`\nErrors - 402:${err402}, 403:${err403}, 419:${err419}, 429:${err429}, 500:${err500}, 502:${err502}, 503:${err503}, 504:${err504}, Other:${otherErrors} (${otherCodes})`);
 }
 run()
