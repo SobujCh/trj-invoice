@@ -72,10 +72,10 @@ async function fetcher(dataBody) {
         if (aborting) return;                   // If we are aborting, skip further processing
         if (error.name === 'AbortError') {return;}      //if aborted, we don't need to log it
         console.error('\nError fetching data:');
-        console.error('\nMessage:', error.message);
-        console.error('\nCause:', error.cause);
-        console.error('\nCauseKeys:', Object.keys(error.cause));
-        console.error('\nCause2:', error.cause.cause);
+        console.error('Message:', error.message);
+        console.error('Cause:', error.cause.cause);
+        console.error('CauseKeys:', Object.keys(error.cause.cause));
+        console.error('Cause2:', typeof(error.cause.cause));
     });
     currentAgent = (currentAgent + 1) % agents.length; // Cycle through agents
 }
