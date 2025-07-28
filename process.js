@@ -1,6 +1,7 @@
 const { ProxyAgent } = require('undici');
 const jsdom = require("jsdom");
 const dotenv = require('dotenv');
+process.env.DOTENV_CONFIG_QUIET=true
 dotenv.config();
 const proxies = require('./proxies.json').proxies;
 
