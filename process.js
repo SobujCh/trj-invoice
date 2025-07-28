@@ -73,8 +73,8 @@ async function fetcher(dataBody) {
         if (error.name === 'AbortError') {return;}      //if aborted, we don't need to log it
         console.error('\nError fetching data:');
         console.error('\nMessage:', error.message);
-        console.error('\Cause:', error.cause);
-        console.error('\Code:', error.code);
+        console.error('\nCause:', error.cause);
+        console.error('\nCauseType:', typeof(error.cause));
     });
     currentAgent = (currentAgent + 1) % agents.length; // Cycle through agents
 }
