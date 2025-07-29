@@ -67,9 +67,11 @@ async function fetcher(dataBody) {
             //console.log('Fetched HTML:', html.trim());
         }
     }).catch(error => {
-        if (aborting) return;                   // If we are aborting, skip further processing
-        if (error.name === 'AbortError') {return;}      //if aborted, we don't need to log it
+        if (aborting) return;                               // If we are aborting, skip further processing
+        if (error?.name === 'AbortError') return;           //if aborted, we don't need to log it
+        if(error?.cause?.code === 'UND_ERR_SOCKET') return; // Ignore socket errors
         if(error.cause && error.cause.cause && typeof(error.cause.cause) === 'object' && error.cause.cause.name && error.cause.cause.name=='AbortError')return;
+        if(error?.cause?.code === 'UND_ERR_CONNECT_TIMEOUT') return; // Ignore timeout errors
         console.error('\nError fetching data:');
         console.error('Message:', error.message);
         if(error.cause && error.cause.cause && typeof(error.cause.cause)==='object' && error.cause.cause) {
