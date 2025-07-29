@@ -51,10 +51,7 @@ async function fetcher(dataBody) {
         if (response.status >= 300 && response.status < 400) {
             const redirectUrl = response.headers.get('location');
             console.log('\nStatus:', response.status, 'Redirect URL:', redirectUrl);
-            clearInterval(intervalId); // Stop the interval if we hit a redirect
             clearControllers(); // Abort all ongoing fetch requests
-            aborting = true; // Set aborting flag to true
-            process.exit(0); // Exit cleanly with success status
         }
         
         if (!response.ok) { 
@@ -75,20 +72,27 @@ async function fetcher(dataBody) {
         if(error.cause && error.cause.cause && typeof(error.cause.cause) === 'object' && error.cause.cause.name && error.cause.cause.name=='AbortError')return;
         console.error('\nError fetching data:');
         console.error('Message:', error.message);
-        console.error('Cause2:', typeof(error.cause.cause));
         if(error.cause && error.cause.cause && typeof(error.cause.cause)==='object' && error.cause.cause) {
+            console.error('Cause2:', typeof(error.cause.cause));
             console.error('CauseKeys:', Object.keys(error.cause.cause));
             console.error('CauseName:', error.cause.cause.name);
             console.error('CauseCode:', error.cause.cause.code);
-
-        }else {
+        }else if(error.cause && typeof(error.cause)==='object' && error.cause){
+            console.error('Cause:', error.cause);
+            console.error('CauseKeys:', Object.keys(error.cause));
+            console.error('CauseName:', error.cause.name);
+            console.error('CauseCode:', error.cause.code);
+        }{
             console.error('Cause:', error.cause);
         }
     });
     currentAgent = (currentAgent + 1) % agents.length; // Cycle through agents
 }
 function clearControllers() {
+    clearInterval(intervalId); // Stop the interval if we hit a redirect
     controllers.forEach(controller => controller.abort());
+    aborting = true; // Set aborting flag to true
+    process.exit(0); // Exit cleanly with success status
 }
 function errCountUp(status) {
     switch (status) {
