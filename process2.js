@@ -1,7 +1,9 @@
 const { connect } = require("puppeteer-real-browser");
 const start = async () => {
     console.log("Starting Puppeteer Real Browser...");
-    const { page, browser } = await connect();
+    const { page, browser } = await connect({
+        xfce: true
+    });
     console.log("Connected to browser.");
     await page.goto("https://payment.ivacbd.com/");
     //here is the page title
